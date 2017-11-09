@@ -1,0 +1,41 @@
+# Try to write your query here
+query Select{
+  allPersons {
+    id,
+    name,
+    messages(last:5) {
+      text
+    }
+  }
+}
+
+mutation CreatePerson{
+  createPerson(name: "Tanya") {
+    id
+  }
+}
+
+mutation CreateMessage {
+  createMessage(text:"Gruss Gott!", sentById: "cj9suug8l4sob0116fyftdiw2") {
+    id
+  }
+}
+
+query searchMessage($searchText: String!){
+  allMessages (filter: {text_contains: $searchText}) {
+    text
+  }
+}
+
+subscription Messages {
+  Message (filter:{
+    mutation_in: [CREATED]
+  }) {
+    node {
+      text,
+      sentBy {
+        name
+      }
+    }
+  }
+}

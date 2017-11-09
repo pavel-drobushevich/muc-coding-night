@@ -1,0 +1,3 @@
+targets:
+  pasha: shared-eu-west-1/cj9su0efi8pcy0182qclvo0qr
+  default: pasha
